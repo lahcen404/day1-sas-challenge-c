@@ -3,44 +3,38 @@
 
 int main() {
 
-    char day[31];
+    int year, day , monthNum;
     char month[12];
-    char year[10000];
 
     printf("entre a day : \n");
-    scanf("%s",day);
+    scanf("%d",&day);
     printf("entre month : \n");
-    scanf("%s",month);
+    scanf("%d",&monthNum);
     printf("entre year : \n");
-    scanf("%s",year);
+    scanf("%d",&year);
 
-   if(strcmp(month, "01") == 0){
-        printf("%s/January/%s",day,year);
-    }else if (strcmp(month, "02") == 0) {
-        printf("%s/February/%s",day,year);
-    }else if (strcmp(month, "03")== 0){
-        printf("%s/March/%s",day,year);
-     }else if (strcmp(month, "04")== 0){
-        printf("%s/April/%s",day,year);
-    }else if (strcmp(month, "05")== 0){
-        printf("%s/May/%s",day,year);
-    }else if (strcmp(month, "06")== 0){
-        printf("%s/June/%s",day,year);
-    }else if (strcmp(month, "07")== 0){
-        printf("%s/July/%s",day,year);
-    }else if (strcmp(month, "08")== 0){
-        printf("%s/Augustt/%s",day,year);
-    }else if (strcmp(month, "09")== 0){
-        printf("%s/Septembre/%s",day,year);
-    }else if (strcmp(month, "10")== 0){
-        printf("%s/octobre/%s",day,year);
-    }else if (strcmp(month, "11")== 0){
-        printf("%s/Novembre/%s",day,year);
-    }else if (strcmp(month, "12")== 0){
-        printf("%s/december/%s",day,year);
-    }else{
-        printf("it''s not a month!!");
-    }
+   switch (monthNum)
+   {
+    case 1: strcpy(month, "january"); break;
+    case 2: strcpy(month, "february"); break;
+    case 3: strcpy(month, "march"); break;
+    case 4: strcpy(month, "april"); break;
+    case 5: strcpy(month, "may"); break;
+    case 6: strcpy(month, "june"); break;
+    case 7: strcpy(month, "july"); break;
+    case 8: strcpy(month, "january"); break;
+    case 9: strcpy(month, "january"); break;
+    case 10: strcpy(month, "january"); break;
+    case 11: strcpy(month, "january"); break;
+    case 12: strcpy(month, "january"); break;
 
+   default:
+   printf(" it's not a month");
+    break;
+   }
+
+    printf("Date: %d %s %d\n", day, month, year);
+
+    return 0;
 
 }
