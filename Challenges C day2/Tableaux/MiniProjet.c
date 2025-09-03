@@ -38,9 +38,26 @@ char choice;
     
 }
 
+void displayBooks(){
+
+    if (countBooks==0)
+    {
+        printf("No boook avialable now !!");
+    }else{
+        for (int i = 0; i < countBooks ; i++)
+        
+        {
+            printf("Boook id %d :  - ",i+1);
+            printf(" %s  |  %s  |  %.2f  |  %d  |\n",titleBook[i],auteur[i],price[i],quantity[i]);
+        }
+        
+    }
+    
+}
 
 int main() {
 
     addBook();
+    displayBooks();
      
 }
