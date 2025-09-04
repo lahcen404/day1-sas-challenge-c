@@ -136,6 +136,18 @@ void updateQuantityBook() {
     }
 }
 
+void totalStock(){
+
+    int total=0;
+    for (int i = 0; i < countBooks; i++)
+    {
+        total+=quantity[i];
+
+    }
+      
+    printf("Total of stock is :: %d",total);
+}
+
 int main() {
 
     int choice;
@@ -170,6 +182,10 @@ do{
 
     case 4:
         updateQuantityBook();
+        break;
+
+    case 6:
+        totalStock();
         break;
     case 0:
         printf("Good Bye !!");
