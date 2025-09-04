@@ -26,19 +26,20 @@ char choice;
     do{
     
     printf("Enter title of book :\n");
-    scanf("%[^\n]",titleBook[countBooks]);
+    scanf(" %[^\n]",titleBook[countBooks]);
     getchar();
 
     printf("Enter auteur of book :\n");
-    scanf("%[^\n]",auteur[countBooks]);
+    scanf(" %[^\n]",auteur[countBooks]);
     getchar();
 
     printf("Enter price of book :\n");
     scanf("%f",&price[countBooks]);
+    getchar();    
 
     printf("Enter quantity of books :\n");
     scanf("%d",&quantity[countBooks]);
-
+    getchar();
     
     countBooks++;
     
@@ -70,19 +71,17 @@ void displayBooks(){
     
 }
 
-// Search Book
+// Search Books
 
-void searchBook(){
+int searchBook(char bookSearched[100]){
 
-    char bookSearched[100];
+    
 if (countBooks==0)
     {
         printf("No boook avialable now !!\n");
         
     }else{
 
-    printf("Entre title of the book you want to search :");
-    scanf("%s",bookSearched);
 
     int found =0;
 
@@ -105,6 +104,7 @@ if (countBooks==0)
             found=1;
             printf("Boook id %d :  - ",i+1);
             printf(" %s  |  %s  |  %.2f  |  %d  |\n",titleBook[i],auteur[i],price[i],quantity[i]);
+            return i;
         }
         
         
@@ -114,6 +114,25 @@ if (countBooks==0)
             printf("Book not found !!\n");
         }
 
+    }
+    return -1;
+}
+
+// Update Quantity
+
+void updateQuantityBook() {
+    char titleBookUpdate[100];
+    int newQuantity = 0;
+
+    printf("Enter title book you want to update quantityy ");
+    scanf(" %[^\n]", titleBookUpdate);
+
+    int idx = searchBook(titleBookUpdate);
+    if (idx != -1) {
+        printf("Enter new quantity: ");
+        scanf("%d", &newQuantity);
+        quantity[idx] = newQuantity;
+        printf("Quantity updated\n");
     }
 }
 
@@ -143,7 +162,14 @@ do{
         break;
 
     case 3:
-        searchBook();
+        char bookSearched[100];
+         printf("Enter title of the book you want to search: ");
+        scanf(" %[^\n]", bookSearched);
+        searchBook(bookSearched);
+        break;
+
+    case 4:
+        updateQuantityBook();
         break;
     case 0:
         printf("Good Bye !!");
