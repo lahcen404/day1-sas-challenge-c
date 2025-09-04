@@ -1,12 +1,25 @@
 #include <stdio.h>
+#include <string.h>
+#include <ctype.h>
 
-char titleBook[50][100];
-char auteur[50][100];
+#define MAX 50
+
+char titleBook[MAX][100];
+char auteur[MAX][100];
 float price[100];
 int quantity[100];
 
 
 int countBooks=0;
+
+
+void toLowerStr(char str[100]) {
+    for (int i = 0; str[i]; i++) {
+        str[i] = tolower((unsigned char)str[i]);
+    }
+}
+
+// Add Book 
 
 void addBook(){
 char choice;
@@ -15,28 +28,30 @@ char choice;
     printf("Enter title of book :\n");
     scanf("%[^\n]",titleBook[countBooks]);
     getchar();
+
     printf("Enter auteur of book :\n");
     scanf("%[^\n]",auteur[countBooks]);
     getchar();
+
     printf("Enter price of book :\n");
     scanf("%f",&price[countBooks]);
-        getchar();
 
     printf("Enter quantity of books :\n");
     scanf("%d",&quantity[countBooks]);
-        getchar();
 
     
     countBooks++;
     
     printf("do you want to add another book (y - n) :");
     scanf(" %c",&choice);
-        getchar();
+    getchar();
 
     }while (choice =='y');
     
     
 }
+
+// Display Books
 
 void displayBooks(){
 
@@ -55,9 +70,90 @@ void displayBooks(){
     
 }
 
+// Search Book
+
+void searchBook(){
+
+    char bookSearched[100];
+if (countBooks==0)
+    {
+        printf("No boook avialable now !!\n");
+        
+    }else{
+
+    printf("Entre title of the book you want to search :");
+    scanf("%s",bookSearched);
+
+    int found =0;
+
+    char lowerSearch[100] , lowerTitle[100];
+    
+    // toLower search inpuut
+    strcpy(lowerSearch,bookSearched);
+    toLowerStr(lowerSearch);
+    
+
+    for (int i = 0; i < countBooks; i++)
+    {
+        // toLower title
+        strcpy(lowerTitle,titleBook[i]);
+        toLowerStr(lowerTitle);
+
+        if (strcmp(lowerTitle,lowerSearch)==0)
+        {
+    
+            found=1;
+            printf("Boook id %d :  - ",i+1);
+            printf(" %s  |  %s  |  %.2f  |  %d  |\n",titleBook[i],auteur[i],price[i],quantity[i]);
+        }
+        
+        
+    }
+      if (found==0)
+        {
+            printf("Book not found !!\n");
+        }
+
+    }
+}
+
 int main() {
 
-    addBook();
-    displayBooks();
+    int choice;
+do{
+    printf("\n------ Menu---------\n");
+    printf("1 - Add a Book.\n");
+    printf("2 - Display Books.\n");
+    printf("3 - Search Book.\n");
+    printf("4 - Update a Book.\n");
+    printf("5 - Delete a Book.\n");
+    printf("6 - Diplay Total of Book's Stock.\n");
+    printf("0 -  Quit.\n");
+
+     scanf("%d",&choice);
+     getchar();
+
+     switch (choice)
+     {
+     case 1:
+        addBook();
+        break;
+    case 2:
+        displayBooks();
+        break;
+
+    case 3:
+        searchBook();
+        break;
+    case 0:
+        printf("Good Bye !!");
+        break;
      
+     default:
+        printf("Choice invalide!!");
+        break;
+     }
+    }while (choice !=0);
+    
+    
 }
