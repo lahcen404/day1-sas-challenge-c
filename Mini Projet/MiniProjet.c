@@ -121,6 +121,12 @@ if (countBooks==0)
 // Update Quantity
 
 void updateQuantityBook() {
+
+    if (countBooks==0)
+    {
+        printf("No boook avialable now !!\n");
+    }else{
+    
     char titleBookUpdate[100];
     int newQuantity = 0;
 
@@ -135,7 +141,9 @@ void updateQuantityBook() {
         printf("Quantity updated\n");
     }
 }
+}
 
+// Total Quantitty 
 void totalStock(){
 
     int total=0;
@@ -146,6 +154,50 @@ void totalStock(){
     }
       
     printf("Total of stock is :: %d",total);
+}
+
+// Delete Book
+
+void deleteBook(){
+
+    if (countBooks==0)
+    {
+        printf("No boook avialable now !!\n");
+    }else{
+    
+    char titleBookDelete[100];
+    
+
+    printf("Enter title book you want to delete  ");
+    scanf(" %[^\n]", titleBookDelete);
+
+    int idx = searchBook(titleBookDelete);
+    if (idx != -1) {
+
+        for (int i = 0; i < countBooks; i++)
+        {
+            if (strcmp(titleBookDelete,titleBook[i])==0){
+                
+                for (int j = i; j < countBooks; j++)
+                {
+                    strcpy(titleBook[j],titleBook[j+1]);
+                    strcpy(auteur[j],auteur[j+1]);
+                    price[j]=price[j+1];
+                    quantity[j]=quantity[j+1];
+                }
+                
+                countBooks--;
+                break;
+
+            }
+        
+        }
+        
+        printf("Deleted successfully!!");
+        
+    }
+
+}
 }
 
 int main() {
@@ -182,6 +234,10 @@ do{
 
     case 4:
         updateQuantityBook();
+        break;
+
+    case 5:
+        deleteBook();
         break;
 
     case 6:
