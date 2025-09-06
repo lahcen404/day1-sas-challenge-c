@@ -56,6 +56,28 @@ void displayContact()
 int main()
 {
 
-    addContact();
-    displayContact();
+    int choice;
+
+
+
+    do
+    {
+        printf("1 - Add Contact \n");
+        printf("2 - Modify Contact \n");
+        printf("3 - Delete Contact \n");
+        printf("4 - Diplay Contacts \n");
+        printf("5 - Search Contact \n");
+        printf("6 - Quit \n");
+
+        printf("Enter ur choice :\n");
+        scanf("%d",&choice);
+
+        if (choice < 0 || choice>6)
+        {
+            printf("Invalide choice , try agaiin!!\n");
+        }
+        
+
+    } while (choice != 6 || choice<0 || choice>6 );
+    
 }
