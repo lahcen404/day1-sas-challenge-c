@@ -37,15 +37,25 @@ void addContact()
         scanf("%c",&choice);
         getchar();
 
-        
     } while (choice == 'y');
 
 }
 
+void displayContact()
+{
 
+    printf("--------- Contact List ---------\n");
+    for (int i = 0; i < countContacts; i++)
+    {
+        printf("--------- Contact %d ---------\n", i + 1);
+        printf("| Contact name : %s \n| Contact phone : %s \n| Contact email : %s", contact[i].name, contact[i].phone, contact[i].email);
+        printf("------------------------\n");
+    }
+}
 
 int main()
 {
 
     addContact();
+    displayContact();
 }
