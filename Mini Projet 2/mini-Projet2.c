@@ -37,6 +37,7 @@ void addContact()
         scanf("%c",&choice);
         getchar();
 
+        
     } while (choice == 'y');
 
 }
