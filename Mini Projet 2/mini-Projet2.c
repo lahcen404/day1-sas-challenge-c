@@ -94,7 +94,7 @@ int searchContact(char nameContactSearch[MAX]){
         printf("Contact Found !\n");
          printf("--------- Contact %d ---------\n", i + 1);
         printf("| Contact name : %s \n| Contact phone : %s \n| Contact email : %s", contact[i].name, contact[i].phone, contact[i].email);
-        printf("------------------------\n");
+        printf("\n------------------------\n");
         return i;
        
        
@@ -104,6 +104,37 @@ int searchContact(char nameContactSearch[MAX]){
     printf("Contact not found !!!\n");
     return -1;
 
+
+}
+
+void modifyContact(char nameContact[MAX]){
+
+    char newPhone[MAX];
+    char newEmail[MAX];
+
+      int index =0;
+    index = searchContact(nameContact);
+    printf("index :%d \n",index);
+
+
+    if (index == -1)
+    {
+        printf("Contact name not found !");
+    }else{
+
+        printf("Enter new phone number :\n");
+        fgets(newPhone,sizeof(newPhone),stdin);
+
+        printf("Enter new email :\n");
+        fgets(newEmail,sizeof(newEmail),stdin);
+
+        strcpy(contact[index].phone,newPhone);
+        strcpy(contact[index].email,newEmail);
+
+        printf("Contact Modified successfully !!\n");
+        
+    }
+    
 
 }
 
@@ -140,6 +171,7 @@ int main()
             break;
 
         case 2:
+        modifyContact(contactName);
             break;    
 
         case 3:
