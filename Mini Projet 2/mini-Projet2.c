@@ -138,6 +138,30 @@ void modifyContact(char nameContact[MAX]){
 
 }
 
+void deleteContact(char nameContact[MAX]){
+
+    int index =0;
+    index = searchContact(nameContact);
+    printf("index :%d \n",index);
+
+    if (index == -1)
+    {
+        printf("Contact name not found !");
+    }else{
+        for (int i = index; i < countContacts-1; i++)
+        {
+            strcpy(contact[i].name,contact[i+1].name);
+            strcpy(contact[i].phone,contact[i+1].phone);
+            strcpy(contact[i].email,contact[i+1].email);
+        }
+        
+        printf("Contact deleted succesfully !!\n");
+        countContacts--;
+    }
+    
+
+}
+
 int main()
 {
 
@@ -175,6 +199,7 @@ int main()
             break;    
 
         case 3:
+            deleteContact(contactName);
             break;
 
         case 4:
